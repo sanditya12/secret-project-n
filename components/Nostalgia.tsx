@@ -13,7 +13,7 @@ const Nostalgia = () => {
             <h4 className="font-bold">Nostalgia</h4>
             <h2>"Aku lagi baca chat kita yang lama..."</h2>
           </div>
-          <ButtonWithIconText text="Enter Nostalgia" type="dark">
+          <ButtonWithIconText text="Enter Nostalgia" type="white">
             <BsStars />
           </ButtonWithIconText>
         </div>

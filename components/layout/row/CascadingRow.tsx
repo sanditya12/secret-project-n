@@ -22,7 +22,7 @@ const CascadingRow = ({ direction, className, images }: Props) => {
   return (
     <div className="flex  drop-shadow-2xl ">
       {images.map((img) => (
-        <RowChildren img={img} />
+        <RowChildren img={img} key={img} />
       ))}
     </div>
   );

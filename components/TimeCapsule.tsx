@@ -12,7 +12,7 @@ const TimeCapsule = () => {
             <h4 className="font-bold">Time Capsule</h4>
             <h2>Hello future us!</h2>
           </div>
-          <ButtonWithIconText text="Create Time Capsule" type="dark">
+          <ButtonWithIconText text="Create Time Capsule" type="white">
             <CgPill />
           </ButtonWithIconText>
         </div>

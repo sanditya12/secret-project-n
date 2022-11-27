@@ -15,9 +15,12 @@ module.exports = {
       colors: {
         "light-grey": "#E4E5E4",
         grey: "#B0B0B0",
+        "grey-2": "#1F1F1F",
+        "dark-grey": "#171717",
         dark: "#141414",
         white: "#ffffff",
         light: "#e5e5e5",
+        red: "#E50914",
       },
       backgroundImage: {
         "gradient-to-b":
