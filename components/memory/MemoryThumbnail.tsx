@@ -1,16 +1,15 @@
 import Image from "next/image";
 import { useRecoilState } from "recoil";
-import { Memory } from "../../atoms/memories.atom";
+import { Memory, memoryState } from "../../atoms/memories.atom";
 import { memoryModalState } from "../../atoms/memory-modal.atom";
 import { useMemory } from "../../hooks/useMemory";
-import { memory } from "../../placeholders/memories";
 
 interface Props {
   memory: Memory;
 }
 
 const MemoryThumbnail = ({ memory }: Props) => {
-  const { setOrder } = useMemory();
+  const [order, setOrder] = useRecoilState(memoryState);
   const [showMemoryModal, setShowMemoryModal] =
     useRecoilState(memoryModalState);
   return (

@@ -6,12 +6,19 @@ import { useRecoilState } from "recoil";
 import { memoryModalState } from "../../atoms/memory-modal.atom";
 import { useMemory } from "../../hooks/useMemory";
 import Chats from "../messages/Chats";
+import { useMemo, useState } from "react";
+import { memoriesState, memoryState } from "../../atoms/memories.atom";
 
 const MemoryModal = () => {
-  const { selectedMemory, order, setOrder, memories } = useMemory();
-
   const [showMemoryModal, setShowMemoryModal] =
     useRecoilState(memoryModalState);
+
+  const [memories, setMemories] = useRecoilState(memoriesState);
+  const [order, setOrder] = useRecoilState(memoryState);
+  const selectedMemory = useMemo(
+    () => memories.find((memory) => memory.order === order),
+    [memories, order]
+  );
 
   const handleClose = () => {
     setShowMemoryModal(false);

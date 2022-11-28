@@ -15,7 +15,8 @@ const Profile = ({ className, username, avatar }: Props) => {
   const router = useRouter();
 
   const handleClick = () => {
-    setUser(username);
+    setUser(username.toLowerCase());
+    router.push("/");
   };
 
   //   useEffect(() => {
@@ -23,22 +24,19 @@ const Profile = ({ className, username, avatar }: Props) => {
   //   }, [user]);
 
   return (
-    <div className={`${className} text-center group pb-12`}>
-      <Link href="/">
-        <img
-          onClick={handleClick}
-          className={`cursor-pointer object-cover rounded h-32 w-32 group-hover:border-solid group-hover:border-white group-hover:border-2`}
-          src={avatar}
-          alt={username}
-        />
-      </Link>
-      <Link href="/">
-        <div className="mt-4 onClick={handleClick}">
-          <h2 className={`text-light-grey group-hover:text-white`}>
-            {username}
-          </h2>
-        </div>
-      </Link>
+    <div
+      onClick={handleClick}
+      className={`${className} text-center group pb-12`}
+    >
+      <img
+        onClick={handleClick}
+        className={` cursor-pointer object-cover rounded h-32 w-32 group-hover:border-solid group-hover:border-white group-hover:border-2`}
+        src={avatar}
+        alt={username}
+      />
+      <div className="mt-4 onClick={handleClick}">
+        <h2 className={`text-light-grey group-hover:text-white`}>{username}</h2>
+      </div>
     </div>
   );
 };

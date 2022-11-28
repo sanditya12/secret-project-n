@@ -1,5 +1,3 @@
-import Countdown from "react-countdown";
-
 const ProfileLocked = () => {
   const date = new Date("2023-09-07T10:00:00.000Z");
   return (
@@ -11,7 +9,7 @@ const ProfileLocked = () => {
           alt="Us"
         />
         <div className="absolute top-0 left-0 rounded h-32 w-32 bg-black opacity-70"></div>
-        <Countdown
+        {/* <Countdown
           renderer={({ hours, minutes, seconds, days }) => {
             return (
               <h3 className="text-red font-bold absolute -bottom-24 left-0 right-0 mx-auto  ">
@@ -20,7 +18,7 @@ const ProfileLocked = () => {
             );
           }}
           date={date}
-        />
+        /> */}
       </div>
 
       <div className="mt-4 ">

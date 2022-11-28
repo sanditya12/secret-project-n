@@ -15,7 +15,13 @@ const Chat = ({ className, author, message }: Props) => {
         >
           {author}
         </h3>
-        <p className="text-sm mt-1 text-light whitespace-pre-wrap">{message}</p>
+        <p
+          className={`${
+            author === "sha" && "text-right"
+          } text-sm mt-1 text-light whitespace-pre-wrap`}
+        >
+          {message}
+        </p>
       </div>
     </div>
   );

@@ -9,24 +9,28 @@ import Nostalgia from "../components/Nostalgia";
 import VideoModal from "../components/modals/VideoModal";
 import { useRecoilState } from "recoil";
 import { videoModalState } from "../atoms/video-modal.atom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useVideo } from "../hooks/useVideo";
 import MemoryModal from "../components/modals/MemoryModal";
 import { memoryModalState } from "../atoms/memory-modal.atom";
 import { useMemory } from "../hooks/useMemory";
 import { useUser } from "../hooks/useUser";
 import { useRouter } from "next/router";
+import { memoriesState, memoryState } from "../atoms/memories.atom";
 
 const Home: NextPage = () => {
   const [showVideoModal, setShowVideoModal] = useRecoilState(videoModalState);
   const { getVideo } = useVideo();
 
+  const [memories, setMemories] = useRecoilState(memoriesState);
+  const [order, setOrder] = useRecoilState(memoryState);
+  const selectedMemory = useMemo(
+    () => memories.find((memory) => memory.order === order),
+    [memories, order]
+  );
+
   const [showMemoryModal, setShowMemoryModal] =
     useRecoilState(memoryModalState);
-  const { getMemories, selectedMemory } = useMemory();
-
-  const { user, setUser } = useUser();
-  const router = useRouter();
 
   useEffect(() => {
     getVideo();

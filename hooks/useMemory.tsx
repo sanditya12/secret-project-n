@@ -2,8 +2,6 @@ import axios from "axios";
 import { useEffect, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { memoriesState, Memory, memoryState } from "../atoms/memories.atom";
-import { videoState } from "../atoms/video.atom";
-import { memories as placeholderMemory } from "../placeholders/memories";
 import { GetMemoriesResponse } from "./useMemoryTypes";
 
 export const useMemory = () => {

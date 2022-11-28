@@ -1,8 +1,12 @@
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Thumbnail from "./MemoryThumbnail";
-import Memory from "./MemoryThumbnail";
 import { useMemory } from "../../hooks/useMemory";
+import { GetMemoriesResponse } from "../../hooks/useMemoryTypes";
+import axios from "axios";
+import { memoriesState } from "../../atoms/memories.atom";
+import { useRecoilState } from "recoil";
+import MemoryThumbnail from "./MemoryThumbnail";
 
 interface Props {
   className?: string;
@@ -10,7 +14,41 @@ interface Props {
 }
 
 const Memories = ({ className, p }: Props) => {
-  const { memories, setOrder } = useMemory();
+  const [isLoading, setIsLoading] = useState(true);
+  const [memories, setMemories] = useRecoilState(memoriesState);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const fetchedMemories = await (
+          await axios.get<GetMemoriesResponse>(
+            "https://urchin-app-hfuu4.ondigitalocean.app/api/memories/?populate=*"
+          )
+        ).data.data
+          .map(({ attributes }) => {
+            const imgFormats = attributes.img.data.attributes.formats;
+            const fetchedMemory = {
+              title: attributes.title,
+              chats: attributes.Chat,
+              img: imgFormats.medium
+                ? imgFormats.medium.url
+                : imgFormats.small.url,
+              part: attributes.part,
+              order: attributes.order,
+            };
+            return fetchedMemory;
+          })
+          .sort(({ order: a }, { order: b }) => a - b);
+        console.log(fetchedMemories);
+
+        setMemories(fetchedMemories);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
@@ -41,11 +79,21 @@ const Memories = ({ className, p }: Props) => {
           className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2 "
           ref={rowRef}
         >
-          {memories
-            .filter((memory) => memory.part === p)
-            .map((memory) => (
-              <Memory memory={memory} key={memory.order} />
-            ))}
+          {isLoading ? (
+            <>
+              <div className="relative h-40 min-w-[180px] cursor-pointer bg-grey-2 md:h-36 md:min-w-[260px]"></div>
+              <div className="relative h-40 min-w-[180px] cursor-pointer bg-grey-2 md:h-36 md:min-w-[260px]"></div>
+              <div className="relative h-40 min-w-[180px] cursor-pointer bg-grey-2 md:h-36 md:min-w-[260px]"></div>
+              <div className="relative h-40 min-w-[180px] cursor-pointer bg-grey-2 md:h-36 md:min-w-[260px]"></div>
+              <div className="relative h-40 min-w-[180px] cursor-pointer bg-grey-2 md:h-36 md:min-w-[260px]"></div>
+            </>
+          ) : (
+            memories
+              .filter((memory) => memory.part === p)
+              .map((memory) => (
+                <MemoryThumbnail memory={memory} key={memory.order} />
+              ))
+          )}
         </div>
         <HiOutlineChevronRight
           className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
