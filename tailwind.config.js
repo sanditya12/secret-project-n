@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         "netflix-sans": ["NetflixSans", "sans-serif"],
+        "indie-flower": ["Indie Flower", "cursive"],
       },
       colors: {
         "light-grey": "#E4E5E4",
@@ -24,7 +25,7 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-to-b":
-          "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 10%,rgba(20,20,20,.35) 20%,rgba(20,20,20,.58) 25%,#141414 30%,#141414 90%);",
+          "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 18%,rgba(20,20,20,.35) 25%,rgba(20,20,20,.58) 31%,#141414 36%,#141414 90%);",
       },
     },
   },

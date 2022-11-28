@@ -9,6 +9,7 @@ export interface Video {
   date?: string;
   genre?: string;
   keyword?: string;
+  isShort?: boolean;
 }
 
 const defaultVideo: Video = {

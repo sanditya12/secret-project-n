@@ -1,7 +1,5 @@
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 import { useEffect, useRef, useState } from "react";
-import Thumbnail from "./MemoryThumbnail";
-import { useMemory } from "../../hooks/useMemory";
 import { GetMemoriesResponse } from "../../hooks/useMemoryTypes";
 import axios from "axios";
 import { memoriesState } from "../../atoms/memories.atom";
@@ -39,7 +37,6 @@ const Memories = ({ className, p }: Props) => {
             return fetchedMemory;
           })
           .sort(({ order: a }, { order: b }) => a - b);
-        console.log(fetchedMemories);
 
         setMemories(fetchedMemories);
       } catch (e) {

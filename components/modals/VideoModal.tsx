@@ -5,10 +5,11 @@ import { MdOutlineClose } from "react-icons/md";
 import { Dialog } from "@mui/material";
 import ReactPlayer from "react-player/youtube";
 import { useVideo } from "../../hooks/useVideo";
+import { videoState } from "../../atoms/video.atom";
 
 const VideoModal = () => {
   const [showVideoModal, setShowVideoModal] = useRecoilState(videoModalState);
-  const { video } = useVideo();
+  const [video, setVideo] = useRecoilState(videoState);
 
   const handleClose = () => {
     setShowVideoModal(false);

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
 @font-face {
   font-family: "NetflixSans";
   src: url("../public/fonts/NetflixSans/NetflixSans-Regular.woff2")

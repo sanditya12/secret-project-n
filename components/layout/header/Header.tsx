@@ -4,7 +4,13 @@ import Logo from "../../icons/Logo";
 import Link from "next/link";
 import Avatar from "../../icons/Avatar";
 import { useEffect, useState } from "react";
-// import BasicMenu from './BasicMenu'
+import { motion } from "framer-motion";
+
+const variants = {
+  hidden: { opacity: 0, scale: 1, y: 0 },
+  enter: { opacity: 1, scale: 1, y: 0 },
+  exit: { opacity: 0, scale: 1, y: 0 },
+};
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +43,7 @@ function Header() {
         <HeaderLinks className="" />
       </div>
       <div className="flex items-center space-x-5">
-        <Link className="" href={"/"}>
+        <Link className="" href={"#letter"}>
           <HiOutlineBell className="text-white h-7 w-7" />
         </Link>
         <Link href="/account">

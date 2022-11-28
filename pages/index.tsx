@@ -4,23 +4,17 @@ import Banner from "../components/Banner";
 import Memories from "../components/memory/Memories";
 import TimeCapsule from "../components/TimeCapsule";
 import { BsClockHistory } from "react-icons/bs";
-import { GiConversation } from "react-icons/gi";
-import Nostalgia from "../components/Nostalgia";
 import VideoModal from "../components/modals/VideoModal";
 import { useRecoilState } from "recoil";
 import { videoModalState } from "../atoms/video-modal.atom";
 import { useEffect, useMemo } from "react";
-import { useVideo } from "../hooks/useVideo";
 import MemoryModal from "../components/modals/MemoryModal";
 import { memoryModalState } from "../atoms/memory-modal.atom";
-import { useMemory } from "../hooks/useMemory";
-import { useUser } from "../hooks/useUser";
-import { useRouter } from "next/router";
 import { memoriesState, memoryState } from "../atoms/memories.atom";
+import Letter from "../components/Letter";
 
 const Home: NextPage = () => {
   const [showVideoModal, setShowVideoModal] = useRecoilState(videoModalState);
-  const { getVideo } = useVideo();
 
   const [memories, setMemories] = useRecoilState(memoriesState);
   const [order, setOrder] = useRecoilState(memoryState);
@@ -31,10 +25,6 @@ const Home: NextPage = () => {
 
   const [showMemoryModal, setShowMemoryModal] =
     useRecoilState(memoryModalState);
-
-  useEffect(() => {
-    getVideo();
-  }, []);
   // useEffect(() => {
   //   if (user === "") {
   //     router.push("/profiles");
@@ -48,13 +38,13 @@ const Home: NextPage = () => {
   return (
     <div className=" bg-gradient-to-b from-transparent to-dark ">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Shalamanya</title>
+        <link rel="icon" href="/logoshalamanya_close" />
       </Head>
 
       <main className="min-h-[95vh]">
         <Banner />
-        <section>
+        <section id="memories">
           <Memories p={1} />
         </section>
         <section>
@@ -77,6 +67,9 @@ const Home: NextPage = () => {
           />
           <Nostalgia />
         </section> */}
+        <section id="letter" className=" text-white px-0 mt-8">
+          <Letter />
+        </section>
       </main>
       {showVideoModal && <VideoModal />}
       {showMemoryModal && selectedMemory && <MemoryModal />}
