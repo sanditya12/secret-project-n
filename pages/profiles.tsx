@@ -11,7 +11,7 @@ const variants = {
 const Profiles = () => {
   const { user, setUser } = useUser();
   useEffect(() => {
-    setUser(null);
+    setUser("");
   }, []);
   return (
     <div className="bg-dark bg-gradient-to-t from-dark via-dark to-black h-screen flex justify-center items-center pb-20">
