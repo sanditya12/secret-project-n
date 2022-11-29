@@ -20,7 +20,7 @@ const Banner = () => {
       try {
         console.log(num);
         const { data } = await axios.get<GetVideoResponse>(
-          `https://urchin-app-hfuu4.ondigitalocean.app/api/videos/${num}?populate=*`
+          `https://urchin-app-hfuu4.ondigitalocean.app/api/videos/${num}?populate=*https://urchin-app-hfuu4.ondigitalocean.app/api/memories?populate=*&pagination[pageSize]=100`
         );
         const { title, ytId, thumbnail, date, genre, keyword, caption } =
           data.data.attributes;

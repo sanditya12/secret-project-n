@@ -25,11 +25,12 @@ const MemoryModal = () => {
   };
 
   const handleMove = () => {
-    setOrder(order + 1);
+    setOrder((prev) => prev + 1);
+    console.log(order);
   };
 
   const handleMoveLeft = () => {
-    setOrder(order - 1);
+    setOrder((prev) => prev - 1);
   };
 
   return (
