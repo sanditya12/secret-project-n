@@ -20,7 +20,7 @@ const Memories = ({ className, p }: Props) => {
       try {
         const fetchedMemories = await (
           await axios.get<GetMemoriesResponse>(
-            "https://urchin-app-hfuu4.ondigitalocean.app/api/memories/?populate=*"
+            "https://urchin-app-hfuu4.ondigitalocean.app/api/memories/?populate=*&pagination[pageSize]=100"
           )
         ).data.data
           .map(({ attributes }) => {
