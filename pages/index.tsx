@@ -39,7 +39,7 @@ const Home: NextPage = () => {
     <div className=" bg-gradient-to-b from-transparent to-dark ">
       <Head>
         <title>Shalamanya</title>
-        <link rel="icon" href="/logoshalamanya_close" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="min-h-[95vh]">
