@@ -107,7 +107,7 @@ const Footer = () => {
   const num = Math.floor(Math.random() * dialogues.length);
   const [dialogue, setDialogue] = useState({} as Dialogue);
   useEffect(() => {
-    setDialogue(dialogues[dialogues.length - 1]);
+    setDialogue(dialogues[num]);
   }, []);
   const firstClass = "-top-8 ";
   const secondClass = "-top-4 ";
