@@ -36,7 +36,11 @@ const Letter = () => {
   return isLoading ? (
     <div></div>
   ) : (
-    <div className={` bg-red px-[4%] pt-10`}>
+    <div
+      className={`${
+        isCollapsed ? "bg-light text-dark" : "bg-red"
+      }  px-[4%] pt-10`}
+    >
       <div
         className={`h-full ${!isCollapsed && "max-h-[12rem]"}   overflow-clip`}
       >
