@@ -30,7 +30,9 @@ const Memories = ({ className, p }: Props) => {
               chats: attributes.Chat,
               img: imgFormats.medium
                 ? imgFormats.medium.url
-                : imgFormats.small.url,
+                : imgFormats.small
+                ? imgFormats.small.url
+                : imgFormats.thumbnail.url,
               part: attributes.part,
               order: attributes.order,
             };
