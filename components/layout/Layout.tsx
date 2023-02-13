@@ -23,7 +23,7 @@ const Layout = ({ children }: Props) => {
 
   console.log(isProfile);
   useEffect(() => {
-    !user && !isProfile && router.push("/profiles");
+    !isProfile && router.push("/profiles");
     isProfile && setIsLoading(false);
     router.events.on("routeChangeComplete", () => {
       setIsLoading(false);
