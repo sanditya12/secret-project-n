@@ -25,6 +25,15 @@ const Home: NextPage = () => {
 
   const [showMemoryModal, setShowMemoryModal] =
     useRecoilState(memoryModalState);
+  // useEffect(() => {
+  //   if (user === "") {
+  //     router.push("/profiles");
+  //   }
+  // });
+
+  // useEffect(() => {
+  //   getUserFromLocal();
+  // }, []);
 
   return (
     <div className=" bg-gradient-to-b from-transparent to-dark ">

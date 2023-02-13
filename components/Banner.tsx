@@ -18,6 +18,7 @@ const Banner = () => {
   useEffect(() => {
     (async () => {
       try {
+        console.log(num);
         const { data } = await axios.get<GetVideoResponse>(
           `https://urchin-app-hfuu4.ondigitalocean.app/api/videos/${num}?populate=*`
         );
