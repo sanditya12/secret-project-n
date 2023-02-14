@@ -7,8 +7,7 @@ import Header from "./header/Header";
 import { motion } from "framer-motion";
 import { videoState } from "../../atoms/video.atom";
 import { useRecoilState } from "recoil";
-import axios from "axios";
-import { GetVideoResponse } from "../../hooks/useVideoTypes";
+import { signIn, useSession } from "next-auth/react";
 
 interface Props {
   children?: ReactNode;
@@ -16,6 +15,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   const { user } = useUser();
+  const { data: session } = useSession();
   const router = useRouter();
   const isProfile = router.pathname.includes("/profiles");
   const [isLoading, setIsLoading] = useState(true);
@@ -23,48 +23,29 @@ const Layout = ({ children }: Props) => {
 
   console.log(isProfile);
   useEffect(() => {
-    !isProfile && router.push("/profiles");
+    !user && !isProfile && router.push("/profiles");
     isProfile && setIsLoading(false);
     router.events.on("routeChangeComplete", () => {
       setIsLoading(false);
     });
   }, []);
 
-  // const num = 1;
+  if (isLoading) {
+    return <LoaderPage />;
+  }
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   (async () => {
-  //     try {
-  //       const { data } = await axios.get<GetVideoResponse>(
-  //         `https://urchin-app-hfuu4.ondigitalocean.app/api/videos/${num}?populate=*`
-  //       );
-  //       const { title, ytId, thumbnail, date, genre, keyword, caption } =
-  //         data.data.attributes;
-  //       const format = thumbnail.data.attributes.formats;
-  //       setVideo({
-  //         title,
-  //         ytId,
-  //         genre,
-  //         keyword,
-  //         caption,
-  //         thumbnail: format.large ? format.large.url : format.small.url,
-  //         date,
-  //       });
-  //     } catch (e) {
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   })();
-  // }, []);
-
-  return isLoading ? (
-    <LoaderPage />
-  ) : (
+  return session ? (
     <div className="font-netflix-sans text-white relative overflow-x-clip ">
       {user && <Header />}
       {children}
       {user && <Footer />}
+    </div>
+  ) : (
+    <div className="h-screen bg-dark-grey text-white flex flex-col p-10 justify-center space-y-4 items-center">
+      <p>You are not permitted to see this page.</p>
+      <button className="p-4 w-32 bg-red" onClick={() => signIn()}>
+        Sign in
+      </button>
     </div>
   );
 };
