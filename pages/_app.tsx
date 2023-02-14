@@ -6,13 +6,23 @@ import { motion } from "framer-motion";
 import { useUser } from "../hooks/useUser";
 import ProfileShells from "../components/shells/ProfileShells";
 import { useEffect, useState } from "react";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+import { Session } from "next-auth";
+
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   return (
     <RecoilRoot>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <SessionProvider session={pageProps.session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
     </RecoilRoot>
   );
 }
