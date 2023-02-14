@@ -17,7 +17,9 @@ const Layout = ({ children }: Props) => {
   const { user } = useUser();
   const { data: session } = useSession();
   const router = useRouter();
-  const isProfile = router.pathname.includes("/profiles");
+  const isProfile =
+    router.pathname.includes("/profiles") ||
+    router.pathname.includes("/happy-valentine");
   const [isLoading, setIsLoading] = useState(true);
   const [video, setVideo] = useRecoilState(videoState);
 

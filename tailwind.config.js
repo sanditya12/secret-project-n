@@ -12,6 +12,7 @@ module.exports = {
       fontFamily: {
         "netflix-sans": ["NetflixSans", "sans-serif"],
         "indie-flower": ["Indie Flower", "cursive"],
+        "josefin-sans": ["Josefin Sans", "sans-serif"],
       },
       colors: {
         "light-grey": "#E4E5E4",
@@ -22,6 +23,9 @@ module.exports = {
         white: "#ffffff",
         light: "#e5e5e5",
         red: "#E50914",
+        "valentine-red": "#F75035",
+        "valentine-background": "#F9F4EA",
+        "valentine-very-light": "#FDFBF7",
       },
       backgroundImage: {
         "gradient-to-b":
