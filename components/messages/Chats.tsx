@@ -10,7 +10,7 @@ interface Props {
 const Chats = ({ chats, className }: Props) => {
   return (
     <div className={` bg-dark text-light ${className} h-full`}>
-      <div className="py-2 px-3">
+      <div className=" bg-dark py-2 px-3">
         {chats?.map((chat) => (
           <Chat author={chat.author} message={chat.content} key={chat.id} />
         ))}

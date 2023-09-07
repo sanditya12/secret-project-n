@@ -6,8 +6,9 @@ import { useRecoilState } from "recoil";
 import { memoryModalState } from "../../atoms/memory-modal.atom";
 import { useMemory } from "../../hooks/useMemory";
 import Chats from "../messages/Chats";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { memoriesState, memoryState } from "../../atoms/memories.atom";
+import { FiSend } from "react-icons/fi";
 
 const MemoryModal = () => {
   const [showMemoryModal, setShowMemoryModal] =
@@ -19,6 +20,8 @@ const MemoryModal = () => {
     () => memories.find((memory) => memory.order === order),
     [memories, order]
   );
+
+  const [newChat, setNewChat] = useState("");
 
   const handleClose = () => {
     setShowMemoryModal(false);
@@ -33,11 +36,23 @@ const MemoryModal = () => {
     setOrder((prev) => prev - 1);
   };
 
+  const handleTyping = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNewChat(e.target.value);
+  };
+
+  const handleSend = () => {
+    console.log(newChat);
+  };
+
+  // useEffect(() => {
+  //   console.log(newChat);
+  // }, [newChat]);
+
   return (
     <Modal
       open={showMemoryModal}
       onClose={handleClose}
-      className="fixed !top-7 left-0 right-0 z-50 mx-auto w-[55%] h-[90%] bg-[#181818] overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
+      className="fixed !top-7 left-0 right-0 z-50 mx-auto w-[55%] h-[90%] bg-[#181818] overflow-hidden overflow-y-hidden rounded-md scrollbar-hide"
     >
       <>
         <button
@@ -61,7 +76,20 @@ const MemoryModal = () => {
             <div className="overflow-y-scroll  h-[80%]">
               <Chats chats={selectedMemory?.chats} className="h-full" />
             </div>
-            <div className=" w-full"></div>
+            <div className=" w-full h-[11%] flex justify-center items-center space-x-3 px-3 py-1">
+              <textarea
+                value={newChat}
+                onChange={handleTyping}
+                className="resize-none h-full w-full bg-dark py-5 px-3 rounded-xl"
+                placeholder="type your message here..."
+              />
+              <button
+                className="flex justify-center p-1 hover:bg-grey hover:bg-opacity-30"
+                onClick={handleSend}
+              >
+                <FiSend className="h-6 w-6" color="#e5e5e5" />
+              </button>
+            </div>
           </div>
         </div>
         <button

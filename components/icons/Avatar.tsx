@@ -16,7 +16,11 @@ const Avatar = ({ className }: Props) => {
         router.push("/profiles");
       }}
       className={`cursor-pointer object-cover rounded w-10 h-10`}
-      src={`/PLACEHOLDERS/${user.toLowerCase()}.jpeg`}
+      src={
+        user
+          ? `/PLACEHOLDERS/${user.toLowerCase()}.jpeg`
+          : `/PLACEHOLDERS/us.jpg`
+      }
       alt="Avatar"
     />
   );

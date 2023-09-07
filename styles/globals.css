@@ -48,6 +48,14 @@
     @apply text-5xl font-bold;
   }
 
+  h5 {
+    @apply text-sm font-bold;
+  }
+
+  h6 {
+    @apply text-xs font-bold;
+  }
+
   section {
     @apply px-[4%] py-[2%];
   }
@@ -129,6 +137,10 @@
   left: 0;
   box-shadow: 22px 22px rgba(186, 182, 175, 0.59);
   z-index: -2;
+}
+
+.bg-calendar {
+  background-image: url("/images/Calendar.png");
 }
 
 @keyframes float {

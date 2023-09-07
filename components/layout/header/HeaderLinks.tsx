@@ -15,7 +15,7 @@ const HeaderLinks = ({ className }: Props) => {
           <h3>Memories</h3>
         </Link>
       </li>
-      <li className="hover:text-grey focus:text-white  cursor-pointer relative">
+      {/* <li className="hover:text-grey focus:text-white  cursor-pointer relative">
         <ComingSoonSm className="absolute -right-4 -top-1" />
         <Link href="/">
           <h3>Time capsule</h3>
@@ -26,7 +26,7 @@ const HeaderLinks = ({ className }: Props) => {
         <Link href="/">
           <h3>Nostalgia</h3>
         </Link>
-      </li>
+      </li> */}
     </ul>
   );
 };

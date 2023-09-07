@@ -1,14 +1,21 @@
+import { useRouter } from "next/router";
+
 const ProfileLocked = () => {
-  const date = new Date("2023-09-07T10:00:00.000Z");
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/anniv");
+  };
+
   return (
-    <div className={`text-center group`}>
+    <div className={`text-center group`} onClick={handleClick}>
       <div className="relative ">
         <img
-          className={`cursor-pointer object-cover rounded h-32 w-32 `}
+          className={` cursor-pointer object-cover rounded h-32 w-32 group-hover:border-solid group-hover:border-white group-hover:border-2 `}
           src="/PLACEHOLDERS/us.jpg"
           alt="Us"
         />
-        <div className="absolute top-0 left-0 rounded h-32 w-32 bg-black opacity-70"></div>
+
         {/* <Countdown
           renderer={({ hours, minutes, seconds, days }) => {
             return (
@@ -22,7 +29,7 @@ const ProfileLocked = () => {
       </div>
 
       <div className="mt-4 ">
-        <h2 className={`text-[#7D7D7D] `}>Us</h2>
+        <h2 className={`text-light-grey group-hover:text-white `}>Us</h2>
       </div>
     </div>
   );

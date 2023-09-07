@@ -23,6 +23,10 @@ module.exports = {
         white: "#ffffff",
         light: "#e5e5e5",
         red: "#E50914",
+        "calendar-red": "#DB504A",
+        "calendar-blue": "#8BAAB7",
+        "calendar-green": "#9EBD6E",
+
         "valentine-red": "#F75035",
         "valentine-background": "#F9F4EA",
         "valentine-very-light": "#FDFBF7",
@@ -30,6 +34,8 @@ module.exports = {
       backgroundImage: {
         "gradient-to-b":
           "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 18%,rgba(20,20,20,.35) 25%,rgba(20,20,20,.58) 31%,#141414 36%,#141414 90%);",
+        "gradient-to-b-anniv":
+          "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 18%,rgba(20,20,20,.35) 25%,rgba(20,20,20,.58) 31%,#141414 40%);",
       },
     },
   },
